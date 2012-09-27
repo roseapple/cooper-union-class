@@ -1,1 +1,9 @@
-This is just a sample project to get the students in a guest lecture at Cooper Union going with GitHub and Heroku.
+This is the Header
+==================
+
+this is the sub-head
+--------------------
+
+this is the text about my project
+
+
