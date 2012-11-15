@@ -8,36 +8,56 @@
 	<script>
 		//http://search.twitter.com/search.json?q=obama%20-romney%20%3A%28&page=100&result_type=recent&rpp=100&until=2012-10-09
 		
-		$.ajax({
-		
-			url: 'http://search.twitter.com/search.json?q=obama%20-romney%20%3A%28&page=1&result_type=recent&rpp=100&until=2012-10-19&include_entities=true',
+		$(document).ready(function(){
+				$.ajax({
 			
-			dataType:'jsonp',
-			
-			success:function(response){
+				url: 'http://search.twitter.com/search.json?q=obama%20-romney%20%3A%28&page=1&result_type=recent&rpp=100&until=2012-10-25&include_entities=true',
 				
-				$.each(response.results, function(i, tweet){
-					console.log(response);
+				dataType:'jsonp',
+				
+				success:function(response){
 					
-					var text = tweet['text'];
+					$.each(response.results, function(i, tweet){
+						console.log(response);
+						
+						var text = tweet['text'];
+						
+						$('#tweets').append('<div class="tweet"><li class="show">' + text + '</li></div>');
+						
 					
-					$('#tweets').append('<div class="tweet"><li class="show">' + text + '</li></div>');
-					
-					$("<li></li>").hover(function(){
-						$(this).css('background', 'blue');
+						
+						
+						
 					});
 					
-					
-				});
+				},			
+				error: function(){
+					console.log("damn. i'm sad");
+				}
 				
-			},			
-			error: function(){
-				console.log("damn. i'm sad");
-			}
+				
+				
+			});
+	
+			$('li.show').click(function(){
+						
+				console.log("tryin to clikc on a thing");
+					$(this).css('background', 'blue');
+			});
+				
+	});
+	
+		
 			
-			
-			
-		});
+	var date = "Wed, 24 Oct 2012 23:55:50 +0000";
+	
+	var dateArray = date.split(" ");
+	
+	var hour = dateArray[4];
+	
+	console.log(hour.split(":"));
+	
+	console.log(Date.getHours());
 			
 			
 
@@ -54,9 +74,8 @@
 		background-color:lightgreen;		
 		}
 		
-	.tweet:hover{
-		background-color:green;
-		}
+
+		
 	.tweet li{
 		display:none;
 		margin-left:60px;
